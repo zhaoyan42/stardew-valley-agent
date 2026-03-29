@@ -1,0 +1,68 @@
+<h2>星露谷物语 AI 详细设计 (v2)</h2>
+<p class="subtitle">针对你的反馈，我们引入了成熟的记忆方案，并明确了层级职责。</p>
+
+<div class="cards">
+  <!-- Memory Section -->
+  <div class="card">
+    <div class="card-body">
+      <h3>1. 成熟记忆方案 (Mem0 + ChromaDB)</h3>
+      <p>不再手动写 JSON 文件，而是采用成熟的开源方案：</p>
+      <ul style="color: #94a3b8; font-size: 14px; line-height: 1.6;">
+        <li><b>Mem0 (Memory Layer)</b>: 自动从对话和事件中提取事实（如：“用户喜欢钓鱼”，“今天死在了10层”）。</li>
+        <li><b>ChromaDB (Local DB)</b>: 作为本地持久化存储，支持向量检索，让 AI 能根据当前情境“想起”相关经验。</li>
+        <li><b>自我演进</b>：LLM 会定期 review 记忆库，自动更新战术权重。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Pathfinding Section -->
+  <div class="card">
+    <div class="card-body">
+      <h3>2. 战术层寻路 (A* Pathfinding)</h3>
+      <p>空间逻辑完全下放到 C# Mod 层：</p>
+      <ul style="color: #94a3b8; font-size: 14px; line-height: 1.6;">
+        <li><b>语义指令</b>：LLM 只发 `{"action": "go_to", "target": "Blacksmith"}`。</li>
+        <li><b>本地执行</b>：Mod 调用 A* 算法，避开杂草、NPC 和栅栏。</li>
+        <li><b>实时避障</b>：战术层处理移动过程中的微调。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tactical Rules -->
+  <div class="card">
+    <div class="card-body">
+      <h3>3. 动态战术规则 (Tactical JSON)</h3>
+      <p>LLM 下发的 `tactics.json` 示例：</p>
+      <pre style="background: #0f172a; padding: 12px; border-radius: 6px; font-size: 12px; color: #38bdf8;">
+{
+  "combat": { "kiting_distance": 1.5, "heal_at_hp": 30 },
+  "inventory": { "auto_trash_low_value": true },
+  "social": { "auto_gift_on_meet": true }
+}
+      </pre>
+    </div>
+  </div>
+
+  <!-- Initialization Section -->
+  <div class="card">
+    <div class="card-body">
+      <h3>4. 长期规划初始化 (Active Inquiry)</h3>
+      <p>系统首次启动时，AI 将主动询问并记录：</p>
+      <ul style="color: #94a3b8; font-size: 14px; line-height: 1.6;">
+        <li><b>终极目标</b>：全成就、全图鉴、还是纯粹赚钱？</li>
+        <li><b>社交偏好</b>：优先攻略哪个 NPC？</li>
+        <li><b>经营风格</b>：极致工业化还是自然农耕？</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top: 32px;">
+  <div class="option" data-choice="next" onclick="toggleSelect(this)">
+    <div class="letter">🚀</div>
+    <div class="content">
+      <h3>看起来很棒</h3>
+      <p>请基于此开始编写设计文档 (Spec)</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<h2>星露谷物语 AI 架构概览</h2>
+<p class="subtitle">根据我们的讨论，这是系统的高层架构设计。请查看数据流向和职责划分。</p>
+
+<div style="display: flex; flex-direction: column; gap: 24px; margin-top: 32px; font-family: sans-serif;">
+  
+  <!-- Strategic Layer -->
+  <div style="border: 2px solid #6366f1; border-radius: 12px; padding: 24px; background: rgba(99, 102, 241, 0.05); position: relative;">
+    <div style="position: absolute; top: -14px; left: 24px; background: #1e1e1e; padding: 0 12px; color: #a5b4fc; font-weight: bold; font-size: 14px; border: 2px solid #6366f1; border-radius: 6px;">战略大脑 (LLM)</div>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <div style="flex: 1;">
+        <h3 style="margin: 0 0 8px 0; color: #e2e8f0;">决策与演进中心</h3>
+        <ul style="margin: 0; padding-left: 20px; color: #94a3b8; font-size: 14px; line-height: 1.6;">
+          <li>接收 <b>游戏截图 + JSON状态</b>（视觉与数据双重输入）</li>
+          <li>处理 <b>突发事件</b>，重规划当日任务</li>
+          <li>每日复盘，优化下发 <b>动态战术规则 (tactics.json)</b></li>
+        </ul>
+      </div>
+      <div style="width: 64px; height: 64px; background: #4f46e5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">🧠</div>
+    </div>
+  </div>
+
+  <!-- Arrows -->
+  <div style="display: flex; justify-content: center; gap: 48px; color: #64748b; font-size: 14px; font-weight: bold;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+      <span>截图 + 游戏状态 (触发时)</span>
+      <span style="font-size: 24px;">⬆️</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+      <span style="font-size: 24px;">⬇️</span>
+      <span>战术规则 (tactics.json) + 任务队列</span>
+    </div>
+  </div>
+
+  <!-- Tactical Layer -->
+  <div style="border: 2px solid #10b981; border-radius: 12px; padding: 24px; background: rgba(16, 185, 129, 0.05); position: relative;">
+    <div style="position: absolute; top: -14px; left: 24px; background: #1e1e1e; padding: 0 12px; color: #6ee7b7; font-weight: bold; font-size: 14px; border: 2px solid #10b981; border-radius: 6px;">战术脊髓 (C# SMAPI Mod)</div>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <div style="width: 64px; height: 64px; background: #059669; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">⚙️</div>
+      <div style="flex: 1;">
+        <h3 style="margin: 0 0 8px 0; color: #e2e8f0;">实时执行与环境感知</h3>
+        <ul style="margin: 0; padding-left: 20px; color: #94a3b8; font-size: 14px; line-height: 1.6;">
+          <li>基于 <b>tactics.json</b> 进行毫秒级战斗/寻路决策</li>
+          <li>捕获游戏画面、提取核心数据推送给大脑</li>
+          <li>处理基础任务队列（例如：自动砍树、浇水）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="options" style="margin-top: 48px;">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">👍</div>
+    <div class="content">
+      <h3>架构确认没问题</h3>
+      <p>我们可以进入详细的设计文档编写阶段</p>
+    </div>
+  </div>
+  <div class="option" data-choice="revise" onclick="toggleSelect(this)">
+    <div class="letter">✍️</div>
+    <div class="content">
+      <h3>需要修改</h3>
+      <p>在终端里告诉我你想调整的地方</p>
+    </div>
+  </div>
+</div>
