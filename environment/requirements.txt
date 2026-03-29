@@ -1,0 +1,7 @@
+mcp
+langchain
+mem0ai
+chromadb
+openai
+anthropic
+python-dotenv

@@ -1,0 +1,10 @@
+{
+  "Name": "Stardew Valley AI Agent",
+  "Author": "StardewAI Team",
+  "Version": "1.0.0",
+  "Description": "An AI-powered automation system for Stardew Valley.",
+  "UniqueID": "StardewAI.Agent",
+  "EntryDll": "StardewAIAgent.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}
