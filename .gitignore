@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+*.log
+startup*.log
+
+# Project specific temporary files
+status.json
+commands.json
+screenshot.png
+daily_logs.json
+tactics.json
+.env
+
+# Storage
+chroma_db/
+mem0_storage/
+
+# Superpowers specific
+.superpowers/
+
+# OS specific
+.DS_Store
+Thumbs.db
