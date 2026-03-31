@@ -261,6 +261,8 @@ Use `get_memory` or `get_wiki_info` if you need context to make better strategic
 
 if __name__ == "__main__":
     # Quick test initialization
-    agent = StardewAgent(provider="openai", api_key="sk-...")
-    print("Agent initialized.")
+    from dotenv import load_dotenv
+    load_dotenv()
+    agent = StardewAgent()
+    print("Agent initialized in test mode.")
 
