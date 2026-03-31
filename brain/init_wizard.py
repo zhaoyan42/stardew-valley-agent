@@ -21,11 +21,11 @@ def init_wizard():
     if provider == "openai":
         set_key(env_path, "OPENAI_API_KEY", api_key)
         if base_url:
-            set_key(env_path, "OPENAI_API_BASE", base_url)
+            set_key(env_path, "OPENAI_BASE_URL", base_url)
     else:
         set_key(env_path, "ANTHROPIC_API_KEY", api_key)
         if base_url:
-            set_key(env_path, "ANTHROPIC_API_BASE", base_url)
+            set_key(env_path, "ANTHROPIC_BASE_URL", base_url)
     
     set_key(env_path, "LLM_PROVIDER", provider)
     print(f"\n[✓] API configuration saved to .env\n")

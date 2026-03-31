@@ -1,7 +1,7 @@
 import json
 import os
 import base64
-import imghdr
+import mimetypes
 from openai import OpenAI
 from anthropic import Anthropic
 from brain.memory.manager import MemoryManager
@@ -13,10 +13,10 @@ class StardewAgent:
         self.memory_manager = MemoryManager()
         
         if provider == "openai":
-            self.client = OpenAI(api_key=api_key or os.getenv("OPENAI_API_KEY"))
+            self.client = OpenAI(api_key=api_key or os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"))
             self.model = "gpt-4o"
         elif provider == "anthropic":
-            self.client = Anthropic(api_key=api_key or os.getenv("ANTHROPIC_API_KEY"))
+            self.client = Anthropic(api_key=api_key or os.getenv("ANTHROPIC_API_KEY"), base_url=os.getenv("ANTHROPIC_BASE_URL"))
             self.model = "claude-3-5-sonnet-20240620"
         
         self.tools = [

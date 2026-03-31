@@ -2,21 +2,10 @@ from mem0 import Memory
 import os
 
 class MemoryManager:
-    def __init__(self, db_path="./chroma_db"):
+    def __init__(self, db_path="./mem0_storage"):
         self.db_path = db_path
-        # Ensure the directory for chroma_db exists
-        if not os.path.exists(self.db_path):
-            os.makedirs(self.db_path)
-            
-        config = {
-            "vector_store": {
-                "provider": "chromadb",
-                "config": {
-                    "path": self.db_path,
-                }
-            }
-        }
-        self.memory = Memory.from_config(config)
+        # Use default config for local storage
+        self.memory = Memory()
 
     def add_memory(self, content, user_id):
         """
